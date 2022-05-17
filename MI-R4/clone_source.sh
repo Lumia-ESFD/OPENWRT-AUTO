@@ -26,4 +26,5 @@ sed -i 's/OpenWrt/Xiaomi-Router/g' package/base-files/files/bin/config_generate
 rm -rf feeds/packages/net/xray-core
 rm -rf package/feeds/packages/xray-core
 
-mv -f ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/.config ./.config
+mv -f ${GITHUB_WORKSPACE}/${github.event.inputs.Models}/.config ./.config
+# goto start_build.sh
