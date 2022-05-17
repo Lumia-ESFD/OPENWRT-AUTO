@@ -1,7 +1,6 @@
 name: Auto Build OpenWRT
 
 on:
-
   workflow_dispatch:
             inputs:
               Models:
@@ -30,25 +29,12 @@ jobs:
         run: |
           cd /home/runner
           bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
-          sudo chown -R runner:runner OpenWRT
-          
-      - name: Before Build
-        run: |
-          /bin/bash ${GITHUB_WORKSPACE}/before_build.sh
-          cp -fpR ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/. /home/runner/OpenWRT/
-          
+       
       - name: Start Build
         run: | 
           cd /home/runner/OpenWRT
-          mv .config .config_default
-          rm -f .config.old
-          config_names="$(ls .config*)"
-          for i in $config_names;do mv -f $i .config; make defconfig; make -j$[$(nproc)+1] V=s; rm -rf build_dir/target* build_dir/toolchain* staging_dir/target* staging_dir/toolchain*; done
-      
-      - name: After Build
-        run: |
-          /bin/bash ${GITHUB_WORKSPACE}/after_build.sh
-      
+          /bin/bash ${GITHUB_WORKSPACE}/start_build.sh
+          
       - name: Upload Packages
         uses: actions/upload-artifact@v2
         with:
