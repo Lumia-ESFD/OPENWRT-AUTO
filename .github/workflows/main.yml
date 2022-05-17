@@ -27,13 +27,13 @@ jobs:
         
       - name: Clone Source
         run: |
-          cd /home/runner
+          cd ${GITHUB_WORKSPACE}/OpenWRT
           bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
        
       - name: Start Build
         run: | 
-          cd /home/runner/OpenWRT
-          /bin/bash ${GITHUB_WORKSPACE}/start_build.sh
+          cd ${GITHUB_WORKSPACE}/OpenWRT
+          bash ${GITHUB_WORKSPACE}/start_build.sh
           
       - name: Upload Packages
         uses: actions/upload-artifact@v2

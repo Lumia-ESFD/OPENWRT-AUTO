@@ -3,7 +3,7 @@
 git clone -b master --single-branch https://github.com/Lienol/openwrt OpenWRT
 mkdir -p OpenWRT/package/myapps
 
-cd OpenWRT/package/myapps
+cd ${GITHUB_WORKSPACE}/OpenWRT/package/myapps
 
 git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/jerrykuku/luci-app-argon-config.git
