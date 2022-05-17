@@ -22,13 +22,13 @@ jobs:
           sudo -E apt-get clean
           
 # SSH Connect To Actions
-#      - name: Setup Debug Session
-#        uses: csexton/debugger-action@master
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
         
-      - name: Clone Source
-        run: |
-          cd ${GITHUB_WORKSPACE}/
-          bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
+#      - name: Clone Source
+#        run: |
+#          cd ${GITHUB_WORKSPACE}/
+#          bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
        
       - name: Start Build
         run: | 
