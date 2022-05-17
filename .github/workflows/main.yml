@@ -6,7 +6,7 @@ on:
               Models:
                 description: 'Input Models Name'     
                 required: true
-                default: 'WR703N'
+                default: 'MI-R4'
 jobs:
   Build-OpenWrt:
     runs-on: ubuntu-latest
@@ -30,6 +30,12 @@ jobs:
 #          cd ${GITHUB_WORKSPACE}/
 #          bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
        
+      - name: Customize Setting
+        run: | 
+          cd ${GITHUB_WORKSPACE}/OpenWRT
+          bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/customize.sh
+          mv -f ${GITHUB_WORKSPACE}/${github.event.inputs.Models}/.config ${GITHUB_WORKSPACE}/OpenWRT/.config
+
       - name: Start Build
         run: | 
           cd ${GITHUB_WORKSPACE}/OpenWRT
