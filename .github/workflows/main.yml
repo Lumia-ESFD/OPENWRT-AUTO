@@ -27,7 +27,7 @@ jobs:
         
       - name: Clone Source
         run: |
-          cd ${GITHUB_WORKSPACE}/OpenWRT
+          cd ${GITHUB_WORKSPACE}/
           bash ${GITHUB_WORKSPACE}/${{github.event.inputs.Models}}/clone_source.sh
        
       - name: Start Build
