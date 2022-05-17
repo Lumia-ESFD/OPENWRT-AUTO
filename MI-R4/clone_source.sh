@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ${GITHUB_WORKSPACE}/
 
 git clone -b master --single-branch https://github.com/Lienol/openwrt OpenWRT
 mkdir -p OpenWRT/package/myapps
